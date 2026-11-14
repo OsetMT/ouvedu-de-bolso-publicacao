@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#173b5e">
+  <meta name="description" content="OuvEdu de Bolso - Ouvidoria Setorial da SEDUC-MT">
+
+  <title>OuvEdu de Bolso</title>
+
+  <link rel="manifest" href="./manifest.json">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #eaf2f8, #ffffff);
+      color: #173b5e;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* APRESENTAÇÃO DA CAPA */
+    .tela-apresentacao {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      background: #073b63;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 450ms ease, visibility 450ms ease;
+    }
+
+    .tela-apresentacao img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .tela-apresentacao.oculta {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    header {
+      text-align: center;
+      padding: 35px 20px 20px;
+    }
+
+    .logo {
+      width: 190px;
+      height: 190px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: 27px;
+      margin-bottom: 8px;
+      color: #173b5e;
+    }
+
+    .subtitulo {
+      font-size: 15px;
+      color: #52677b;
+      line-height: 1.5;
+    }
+
+    main {
+      width: 100%;
+      max-width: 650px;
+      margin: 15px auto;
+      padding: 20px;
+      flex: 1;
+    }
+
+    .orientacao {
+      background: #ffffff;
+      border-left: 6px solid #2196a6;
+    }
+
+    .gestores {
+      background: #ffffff;
+      border-left: 6px solid #e6a23c;
+    }
+
+    .cartao {
+      display: block;
+      text-decoration: none;
+      color: #173b5e;
+      padding: 25px 22px;
+      margin-bottom: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.09);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cartao:active {
+      transform: scale(0.98);
+    }
+
+    .cartao h2 {
+      font-size: 21px;
+      margin-bottom: 10px;
+    }
+
+    .cartao p {
+      font-size: 14px;
+      color: #596d7e;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .acessar {
+      display: inline-block;
+      padding: 11px 22px;
+      border-radius: 25px;
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .orientacao .acessar {
+      background: #2196a6;
+    }
+
+    .gestores .acessar {
+      background: #d99026;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: #718293;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding-top: 25px;
+      }
+
+      .logo {
+        width: 155px;
+        height: 155px;
+      }
+
+      h1 {
+        font-size: 23px;
+      }
+
+      main {
+        padding: 15px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tela-apresentacao {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- A arte precisa estar em www/assets/ouvEdu-splash.png -->
+  <div id="telaApresentacao" class="tela-apresentacao" aria-label="Apresentação OuvEdu de Bolso">
+    <img src="./assets/ouvEdu-splash.png" alt="OuvEdu de Bolso" fetchpriority="high">
+  </div>
+
+  <header>
+    <img
+      src="./assets/icons/ouvEdu-512.png"
+      alt="Logo OuvEdu"
+      class="logo"
+    >
+
+    <h1>OuvEdu de Bolso</h1>
+
+    <p class="subtitulo">
+      Ouvidoria Setorial<br>
+      Secretaria de Estado de Educação de Mato Grosso
+    </p>
+  </header>
+
+  <main>
+
+    <a href="./orientacao/index.html"
+       class="cartao orientacao">
+
+      <h2>OuvEdu Orientação</h2>
+
+      <p>
+        Acesse orientações e informações sobre os serviços
+        da Ouvidoria Setorial da Educação.
+      </p>
+
+      <span class="acessar">Acessar Orientação</span>
+
+    </a>
+
+    <a href="./gestores/index.html"
+       class="cartao gestores">
+
+      <h2>OuvEdu para Gestores</h2>
+
+      <p>
+        Acesse o módulo destinado aos gestores,
+        com orientações e ferramentas de consulta.
+      </p>
+
+      <span class="acessar">Acessar Gestores</span>
+
+    </a>
+
+  </main>
+
+  <footer>
+    <p>OuvEdu de Bolso</p>
+    <p>SEDUC-MT — Ouvidoria Setorial</p>
+  </footer>
+
+<script>
+  // Exibe a arte da capa por aproximadamente 2,2 segundos.
+  window.addEventListener('load', () => {
+    const tela = document.getElementById('telaApresentacao');
+    if (!tela) return;
+
+    window.setTimeout(() => {
+      tela.classList.add('oculta');
+      window.setTimeout(() => tela.remove(), 500);
+    }, 2200);
+  });
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./service-worker.js')
+        .catch(error => {
+          console.error('Erro ao registrar o Service Worker:', error);
+        });
+    });
+  }
+</script>
+
+</body>
+</html>
+
+

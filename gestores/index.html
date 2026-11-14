@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <base target="_top">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>OuvEdu para Gestores</title>
+
+  <style>
+    :root {
+      --azul:#073b83;
+      --azul2:#087fc1;
+      --rosa:#e52d91;
+      --roxo:#773ab4;
+      --turquesa:#00a7b5;
+      --amarelo:#ffbd20;
+      --fundo:#f2f8fd;
+      --texto:#19385e;
+      --borda:#e0eaf3;
+    }
+
+    * {
+      box-sizing:border-box;
+    }
+
+    body {
+      margin:0;
+      min-height:100vh;
+      font-family:Arial,sans-serif;
+      color:var(--texto);
+      background:
+        radial-gradient(circle at 0 0,#ffe2ef 0,transparent 25%),
+        radial-gradient(circle at 100% 100%,#d9f5fa 0,transparent 30%),
+        var(--fundo);
+    }
+
+    header {
+      background:white;
+      border-bottom:5px solid transparent;
+      border-image:linear-gradient(
+        90deg,var(--rosa),var(--amarelo),
+        var(--turquesa),var(--roxo)
+      ) 1;
+      padding:16px;
+    }
+
+    .topo {
+      max-width:950px;
+      margin:auto;
+      display:flex;
+      align-items:center;
+      gap:16px;
+    }
+
+    .logo {
+      width:85px;
+      height:85px;
+      object-fit:contain;
+      border-radius:50%;
+    }
+
+    .marca h1 {
+      margin:0;
+      font-size:27px;
+      color:var(--azul);
+    }
+
+    .marca p {
+      margin:6px 0 0;
+      color:var(--roxo);
+      font-weight:bold;
+    }
+
+    main {
+      max-width:850px;
+      margin:28px auto;
+      padding:0 16px 35px;
+    }
+
+    .painel {
+      background:white;
+      border:1px solid var(--borda);
+      border-radius:22px;
+      padding:28px;
+      box-shadow:0 8px 30px #153d6815;
+    }
+
+    .instituicao {
+      text-align:center;
+      font-size:12px;
+      font-weight:bold;
+      color:var(--azul);
+      margin-bottom:22px;
+    }
+
+    .etiqueta {
+      display:inline-block;
+      padding:7px 13px;
+      border-radius:30px;
+      color:white;
+      background:var(--roxo);
+      font-size:12px;
+      font-weight:bold;
+      margin-bottom:12px;
+    }
+
+    h2 {
+      color:var(--azul);
+      font-size:25px;
+      line-height:1.35;
+      margin:5px 0 12px;
+    }
+
+    .descricao {
+      font-size:16px;
+      line-height:1.8;
+      text-align:justify;
+      text-justify:inter-word;
+      margin:15px 0 22px;
+    }
+
+    .orientacao {
+      background:#f0f7fc;
+      border-left:5px solid var(--turquesa);
+      border-radius:10px;
+      padding:20px;
+      line-height:1.8;
+      text-align:justify;
+      text-justify:inter-word;
+      margin:18px 0;
+      font-size:16px;
+      white-space:pre-line;
+    }
+
+    .alerta {
+      background:#fff6df;
+      border-left:5px solid var(--amarelo);
+      border-radius:10px;
+      padding:20px;
+      line-height:1.8;
+      text-align:justify;
+      text-justify:inter-word;
+      margin:18px 0;
+      font-size:16px;
+      white-space:pre-line;
+    }
+
+    .opcoes {
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+      margin-top:22px;
+    }
+
+    button {
+      cursor:pointer;
+      font-size:15px;
+      font-weight:bold;
+      border:none;
+      border-radius:12px;
+      padding:16px;
+      transition:.2s;
+    }
+
+    button:hover:not(:disabled) {
+      transform:translateY(-2px);
+      filter:brightness(.96);
+    }
+
+    .opcao {
+      color:var(--azul);
+      background:white;
+      border:2px solid var(--borda);
+      text-align:left;
+      line-height:1.5;
+    }
+
+    .opcao:hover {
+      border-color:var(--turquesa);
+      background:#f0fbfc;
+    }
+
+    .progresso {
+      height:7px;
+      background:#e8eef4;
+      border-radius:10px;
+      overflow:hidden;
+      margin:20px 0;
+    }
+
+    .barra {
+      height:100%;
+      background:linear-gradient(
+        90deg,var(--rosa),var(--amarelo),
+        var(--turquesa),var(--roxo)
+      );
+      transition:width .3s;
+    }
+
+    .navegacao {
+      display:flex;
+      gap:10px;
+      margin-top:28px;
+      padding-top:20px;
+      border-top:1px solid var(--borda);
+    }
+
+    .voltar {
+      background:var(--roxo);
+      color:white;
+      flex:1;
+    }
+
+    .inicio {
+      background:var(--rosa);
+      color:white;
+      flex:1;
+    }
+
+    .avancar {
+      background:var(--azul);
+      color:white;
+      flex:1;
+    }
+
+    button:disabled {
+      opacity:.35;
+      cursor:not-allowed;
+      transform:none;
+    }
+
+    .rodape {
+      text-align:center;
+      color:#66809a;
+      font-size:12px;
+      padding:18px;
+      line-height:1.7;
+    }
+
+    @media(max-width:550px) {
+      .painel {
+        padding:20px;
+      }
+
+      .marca h1 {
+        font-size:21px;
+      }
+
+      .logo {
+        width:65px;
+        height:65px;
+      }
+
+      h2 {
+        font-size:21px;
+      }
+
+      .navegacao {
+        flex-direction:column;
+      }
+
+      .navegacao button {
+        width:100%;
+      }
+    }
+  </style>
+
+<style>
+.botao-voltar-ouvedu {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 999999;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 16px;
+  border-radius: 10px;
+  background: #073b83;
+  color: white !important;
+  text-decoration: none !important;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 3px 12px #0002;
+}
+.botao-voltar-ouvedu:hover {
+  background: #087fc1;
+}
+</style>
+
+</head>
+
+<body>
+
+<a class="botao-voltar-ouvedu"
+   href="../index.html"
+   target="_top">
+  ← Voltar ao início
+</a>
+
+<header>
+  <div class="topo">
+
+    <!-- LOGO OFICIAL DO OUVEDU -->
+    <img id="logo" class="logo"
+         alt="Mascote OuvEdu" hidden>
+
+    <div class="marca">
+      <h1>OuvEdu para Gestores</h1>
+      <p>Ouvidoria Setorial — SEDUC-MT</p>
+    </div>
+
+  </div>
+</header>
+
+<main>
+  <section class="painel">
+
+    <div class="instituicao">
+      SECRETARIA DE ESTADO DE EDUCAÇÃO DE MATO GROSSO
+    </div>
+
+    <div id="conteudo"></div>
+
+    <div class="navegacao">
+
+      <button class="voltar" onclick="voltar()">
+        ← Voltar
+      </button>
+
+      <button class="inicio" onclick="menuInicial()">
+        ⌂ Menu inicial
+      </button>
+
+      <button class="avancar" id="btnAvancar"
+              onclick="avancar()">
+        Avançar →
+      </button>
+
+    </div>
+
+  </section>
+</main>
+
+<footer class="rodape">
+  OuvEdu para Gestores — Orientação procedimental
+  <br>
+  Ouvidoria Setorial — SEDUC-MT
+</footer>
+
+<script>
+
+// =====================================================
+// 1. LOGO
+// =====================================================
+
+// Inserir posteriormente o endereço da imagem oficial.
+const LOGO_URL = "";
+
+const logo = document.getElementById("logo");
+
+if (LOGO_URL) {
+  logo.onload = () => logo.hidden = false;
+  logo.onerror = () => logo.hidden = true;
+  logo.src = LOGO_URL;
+}
+
+// =====================================================
+// 2. MENU PRINCIPAL
+// =====================================================
+
+const menus = [
+  {id:"0", nome:"Recebi do cidadão"},
+  {id:"1", nome:"Recebi da DRE"},
+  {id:"2", nome:"Recebi da Seduc"},
+  {id:"3", nome:"Recebi da Ouvidoria"},
+  {id:"4", nome:"Recebi da Unidade de Apuração"}
+];
+
+const categorias = [
+  "Bullying",
+  "Violência (agressão, assédio, outros)",
+  "Conflitos Interpessoais",
+  "Reclamação",
+  "Denúncia"
+];
+
+// =====================================================
+// 3. CONSTRUTORES DAS ORIENTAÇÕES
+// =====================================================
+
+function passo(titulo, texto, alerta=false) {
+  return {
+    titulo:titulo,
+    texto:texto,
+    alerta:alerta
+  };
+}
+
+function escolha(titulo, texto, alternativas) {
+  return {
+    titulo:titulo,
+    texto:texto,
+    escolhas:alternativas
+  };
+}
+
+// =====================================================
+// 4. PROCEDIMENTO SIGADOC
+// =====================================================
+
+function procedimentoSigadoc(prefixo, destino, devolucao=false) {
+
+  const ultimaEtapa = devolucao
+    ? "Devolver demanda para " + destino + "."
+    : "Tramitar SIGADOC para " + destino + ".";
+
+  return [
+    passo(
+      prefixo+".1 Abrir SIGADOC",
+      "Abrir SIGADOC colocando como título somente o número do registro, e limitar acesso entre pessoas (antes de incluir a Ata)."
+    ),
+
+    passo(
+      prefixo+".2 Incluir Ata do registro",
+      "Incluir Ata do registro."
+    ),
+
+    passo(
+      prefixo+".3 Realizar os procedimentos necessários",
+      "Realizar os procedimentos necessários."
+    ),
+
+    passo(
+      prefixo+".4 Incluir documentos necessários",
+      "Incluir documentos necessários."
+    ),
+
+    passo(
+      prefixo+".5 Encaminhamento",
+      ultimaEtapa
+    )
+  ];
+}
+
+// =====================================================
+// 5. PROCEDIMENTO DE ALINHAMENTO INTERNO
+// =====================================================
+
+function procedimentoAlinhamento(prefixo, destino, cidadao=false, juntar=false) {
+
+  const comprovacao = juntar
+    ? "Juntar comprovação das ações."
+    : "Arquivar comprovação das ações.";
+
+  const finalizacao = cidadao
+    ? "Apenas informar a ação executada e o resultado alcançado ao cidadão."
+    : "Devolver demanda " + destino + ".";
+
+  return [
+    passo(
+      prefixo+".1 Ouvir os envolvidos em separado",
+      "Ouvir os envolvidos em separado (registrar Ata)."
+    ),
+
+    passo(
+      prefixo+".2 Estudar os achados",
+      "Estudar os achados elaborar ações de alinhamento ou conscientização."
+    ),
+
+    passo(
+      prefixo+".3 Realizar ações de alinhamento ou conscientização",
+      "Realizar ações de alinhamento ou conscientização (registrar Ata)."
+    ),
+
+    passo(
+      prefixo+".4 Comprovação das ações",
+      comprovacao
+    ),
+
+    passo(
+      prefixo+".5 Finalização",
+      finalizacao
+    )
+  ];
+}
+
+
+// =====================================================
+// MENU 0 — RECEBI DO CIDADÃO
+// NOVA ESTRUTURA COMPLETA
+// =====================================================
+
+function menuCidadao(n) {
+
+  const p = "0." + n;
+
+  // ===================================================
+  // PROCEDIMENTO — ABERTURA DE PROTOCOLO MARES
+  // OU MEDIAÇÃO
+  // ===================================================
+
+  function protocoloCidadao(prefixo) {
+    return [
+
+      passo(prefixo+".1 Abrir processo no SIGADOC",
+        "Abrir um processo no SIGADOC colocando como título somente o número do registro, e limitar acesso entre pessoas (antes de incluir a Ata)."),
+
+      passo(prefixo+".2 Realizar os procedimentos necessários",
+        "Realizar os procedimentos necessários."),
+
+      passo(prefixo+".3 Incluir documentos necessários",
+        "Incluir documentos necessários."),
+
+      passo(prefixo+".4 Enviar para DRE",
+        "Enviar para DRE.")
+    ];
+  }
+
+  // ===================================================
+  // PROCEDIMENTO — ALINHAMENTO INTERNO
+  // ===================================================
+
+  function alinhamentoCidadao(prefixo) {
+    return [
+
+      passo(prefixo+".1 Abrir processo no SIGADOC",
+        "Abrir um processo no SIGADOC colocando como título somente o número do registro, e limitar acesso entre pessoas (antes de incluir a Ata)."),
+
+      passo(prefixo+".2 Ouvir os envolvidos em separado",
+        "Ouvir os envolvidos em separado (registrar Ata)."),
+
+      passo(prefixo+".3 Estudar os achados",
+        "Estudar os achados elaborar ações de alinhamento ou conscientização."),
+
+      passo(prefixo+".4 Realizar ações de alinhamento ou conscientização",
+        "Realizar ações de alinhamento ou conscientização (registrar Ata)."),
+
+      passo(prefixo+".5 Juntar documentos ao SIGADOC",
+        "Juntar os documentos necessários ao SIGADOC."),
+
+      passo(prefixo+".6 Enviar para DRE",
+        "Enviar para DRE.")
+    ];
+  }
+
+  // ===================================================
+  // ENCAMINHAMENTOS
+  // ===================================================
+
+  function escolherEncaminhamento(prefixo) {
+
+    return escolha(
+      prefixo+". Definir encaminhamento",
+      "Selecione o procedimento que será adotado:",
+      [
+        {
+          titulo:prefixo+".1 Abertura de Protocolo Mares ou de Mediação",
+          paginas:protocoloCidadao(prefixo+".1")
+        },
+
+        {
+          titulo:prefixo+".2 Alinhamento interno",
+          paginas:alinhamentoCidadao(prefixo+".2")
+        }
+      ]
+    );
+  }
+
+  // ===================================================
+  // 0.1 — BULLYING
+  // ===================================================
+
+  if (n===1) {
+    return [
+
+      passo("0.1.1 Registrar Ata de escuta",
+        "Registrar Ata de escuta."),
+
+      passo("0.1.2 Registrar no sistema Fale Cidadão",
+        "Registrar no sistema Fale Cidadão (e dar o protocolo ao cidadão)."),
+
+      passo("0.1.3 Atenção!",
+        "Não apurar a denúncia MAS aplicar o Protocolo Mares ou de Mediação (conforme situação) para desescalar a situação e fornecer as informações da ação quando a Unidade de Apuração solicitar.",
+        true),
+
+      escolherEncaminhamento("0.1.4")
+    ];
+  }
+
+  // ===================================================
+  // 0.2 — VIOLÊNCIA
+  // ===================================================
+
+  if (n===2) {
+    return [
+
+      passo("0.2.1 Registrar Ata de escuta",
+        "Registrar Ata de escuta."),
+
+      passo("0.2.2 Registrar no sistema Fale Cidadão",
+        "Registrar no sistema Fale Cidadão (e dar o protocolo ao cidadão)."),
+
+      passo("0.2.3 Atenção!",
+        "Não apurar a denúncia MAS aplicar o Protocolo Mares ou de Mediação (conforme situação) para desescalar a situação e fornecer as informações da ação quando a Unidade de Apuração solicitar.",
+        true),
+
+      escolherEncaminhamento("0.2.4")
+    ];
+  }
+
+  // ===================================================
+  // 0.3 — CONFLITOS INTERPESSOAIS
+  // ===================================================
+
+  if (n===3) {
+    return [
+
+      passo("0.3.1 Registrar Ata de escuta",
+        "Registrar Ata de escuta."),
+
+      passo("0.3.2 Registrar no sistema Fale Cidadão",
+        "Registrar no sistema Fale Cidadão (e dar o protocolo ao cidadão)."),
+
+      passo("0.3.3 Atenção!",
+        "Não apurar a denúncia MAS aplicar o Protocolo Mares ou de Mediação (conforme situação) para desescalar a situação e fornecer as informações da ação quando a Unidade de Apuração solicitar.",
+        true),
+
+      escolherEncaminhamento("0.3.4")
+    ];
+  }
+
+  // ===================================================
+  // 0.4 — RECLAMAÇÃO
+  // ===================================================
+
+  if (n===4) {
+    return [
+
+      passo("0.4.1 Registrar Ata de escuta",
+        "Registrar Ata de escuta."),
+
+      passo("0.4.2 Atenção!",
+        "Não apurar a denúncia MAS aplicar o Protocolo Mares ou de Mediação (conforme situação) para desescalar a situação e fornecer as informações da ação quando a Unidade de Apuração solicitar.",
+        true),
+
+      escolherEncaminhamento("0.4.3")
+    ];
+  }
+
+  // ===================================================
+  // 0.5 — DENÚNCIA
+  // ===================================================
+
+  if (n===5) {
+    return [
+
+      passo("0.5.1 Registrar Ata de escuta",
+        "Registrar Ata de escuta."),
+
+      passo("0.5.2 Registrar no sistema Fale Cidadão",
+        "Registrar no sistema Fale Cidadão (e dar o protocolo ao cidadão)."),
+
+      passo("0.5.3 Atenção!",
+        "Não apurar a denúncia MAS aplicar o Protocolo Mares ou de Mediação (conforme situação) para desescalar a situação e fornecer as informações da ação quando a Unidade de Apuração solicitar.",
+        true),
+
+      escolherEncaminhamento("0.5.4")
+    ];
+  }
+
+  return [];
+}
+
+// =====================================================
+// MENU 1 — RECEBI DA DRE
+// ESTRUTURA REVISADA
+// =====================================================
+
+function menuDRE(n) {
+
+  const p = "1." + n;
+
+  // ===================================================
+  // PROCEDIMENTO PARA 1.1, 1.2 E 1.3
+  // ===================================================
+
+  function protocoloMaresDRE(prefixo) {
+    return [
+
+      passo(prefixo+".1 Verificar Fale Cidadão",
+        "Se não tiver registro no Fale Cidadão (ver no processo), registrar no sistema Fale Cidadão e dar o protocolo ao cidadão."),
+
+      passo(prefixo+".2 Abrir SIGADOC",
+        "Abrir o SIGADOC colocando como título somente o número do registro e limitar o acesso entre pessoas (antes de incluir a Ata)."),
+
+      passo(prefixo+".3 Realizar os procedimentos necessários",
+        "Realizar os procedimentos necessários."),
+
+      passo(prefixo+".4 Incluir documentos necessários",
+        "Incluir documentos necessários."),
+
+      passo(prefixo+".5 Atenção!",
+        "Não apurar a denúncia MAS aplicar o Protocolo Mares ou de Mediação (conforme situação) para desescalar a situação e fornecer as informações da ação quando a Unidade de Apuração solicitar.",
+        true),
+
+      passo(prefixo+".6 Devolver demanda à DRE",
+        "Devolver demanda à DRE.")
+    ];
+  }
+
+  function alinhamentoInternoDRE(prefixo) {
+    return [
+
+      passo(prefixo+".1 Verificar Fale Cidadão",
+        "Se não tiver registro no Fale Cidadão (ver no processo), registrar no sistema Fale Cidadão e dar o protocolo ao cidadão."),
+
+      passo(prefixo+".2 Abrir SIGADOC",
+        "Abrir o SIGADOC colocando como título somente o número do registro e limitar o acesso entre pessoas (antes de incluir a Ata)."),
+
+      passo(prefixo+".3 Ouvir os envolvidos em separado",
+        "Ouvir os envolvidos em separado (registrar Ata)."),
+
+      passo(prefixo+".4 Estudar os achados",
+        "Estudar os achados elaborar ações de alinhamento ou conscientização."),
+
+      passo(prefixo+".5 Realizar ações de alinhamento ou conscientização",
+        "Realizar ações de alinhamento ou conscientização (registrar Ata)."),
+
+      passo(prefixo+".6 Atenção!",
+        "Não apurar a denúncia MAS aplicar o Protocolo Mares ou de Mediação (conforme situação) para desescalar a situação e fornecer as informações da ação quando a Unidade de Apuração solicitar.",
+        true),
+
+      passo(prefixo+".7 Juntar documentos ao SIGADOC",
+        "Juntar os documentos necessários ao SIGADOC."),
+
+      passo(prefixo+".8 Devolver demanda à DRE",
+        "Devolver demanda à DRE.")
+    ];
+  }
+
+  function fluxoDRE(prefixo) {
+    return [
+
+      passo(prefixo+".1 Estudar o documento com calma",
+        "Estudar o documento com calma."),
+
+      escolha(
+        prefixo+".2 Definir encaminhamento",
+        "Selecione o procedimento que será adotado:",
+
+        [
+          {
+            titulo:prefixo+".2.1 Abertura de Protocolo Mares ou de Mediação",
+            paginas:protocoloMaresDRE(prefixo+".2.1")
+          },
+
+          {
+            titulo:prefixo+".2.2 Alinhamento interno",
+            paginas:alinhamentoInternoDRE(prefixo+".2.2")
+          }
+        ]
+      )
+    ];
+  }
+
+  // ===================================================
+  // 1.1 — BULLYING
+  // ===================================================
+
+  if (n===1) {
+    return fluxoDRE("1.1");
+  }
+
+  // ===================================================
+  // 1.2 — VIOLÊNCIA
+  // ===================================================
+
+  if (n===2) {
+    return fluxoDRE("1.2");
+  }
+
+  // ===================================================
+  // 1.3 — CONFLITOS INTERPESSOAIS
+  // ===================================================
+
+  if (n===3) {
+    return fluxoDRE("1.3");
+  }
+
+  // ===================================================
+  // 1.4 — RECLAMAÇÃO
+  // ===================================================
+
+  if (n===4) {
+    return [
+
+      passo("1.4.1 Estudar a demanda para responder",
+        "Estudar a demanda para responder."),
+
+      escolha(
+        "1.4.2 Definir encaminhamento",
+        "Selecione o procedimento que será adotado:",
+
+        [
+
+          // ABERTURA DE PROTOCOLO MARES OU MEDIAÇÃO
+
+          {
+            titulo:"1.4.2.1 Abertura de Protocolo Mares ou de Mediação",
+
+            paginas:[
+
+              passo("1.4.2.1.1 Abrir SIGADOC",
+                "Abrir SIGADOC colocando como título somente o número do registro, e limitar acesso entre pessoas (antes de incluir a Ata)."),
+
+              passo("1.4.2.1.2 Incluir Ata do registro",
+                "Incluir Ata do registro."),
+
+              passo("1.4.2.1.3 Realizar os procedimentos necessários",
+                "Realizar os procedimentos necessários."),
+
+              passo("1.4.2.1.4 Incluir documentos necessários",
+                "Incluir documentos necessários."),
+
+              passo("1.4.2.1.5 Devolver demanda para DRE",
+                "Devolver demanda para DRE.")
+            ]
+          },
+
+          // ALINHAMENTO INTERNO
+
+          {
+            titulo:"1.4.2.2 Alinhamento interno",
+
+            paginas:[
+
+              passo("1.4.2.2.1 Ouvir os envolvidos em separado",
+                "Ouvir os envolvidos em separado (registrar Ata)."),
+
+              passo("1.4.2.2.2 Estudar os achados",
+                "Estudar os achados elaborar ações de alinhamento ou conscientização."),
+
+              passo("1.4.2.2.3 Realizar ações de alinhamento ou conscientização",
+                "Realizar ações de alinhamento ou conscientização (registrar Ata)."),
+
+              passo("1.4.2.2.4 Juntar comprovação das ações",
+                "Juntar comprovação das ações."),
+
+              passo("1.4.2.2.5 Devolver demanda para DRE",
+                "Devolver demanda para DRE.")
+            ]
+          }
+        ]
+      )
+    ];
+  }
+
+  // ===================================================
+  // 1.5 — DENÚNCIA
+  // ===================================================
+
+  if (n===5) {
+    return [
+
+      passo("1.5.1 Devolver de imediato",
+        "Devolver de imediato com as informações solicitadas.")
+    ];
+  }
+
+  return [];
+}
+
+
+// =====================================================
+// MENU 2 — RECEBI DA SEDUC
+// ESTRUTURA REVISADA
+// =====================================================
+
+function menuSEDUC(n) {
+
+  // ===================================================
+  // PROCEDIMENTO PARA 2.1, 2.2 E 2.3
+  // ===================================================
+
+  function protocoloMaresSEDUC(prefixo) {
+    return [
+
+      passo(prefixo+".1 Verificar Fale Cidadão",
+        "Se não tiver registro no Fale Cidadão (ver no processo), registrar no sistema Fale Cidadão (e dar o protocolo ao cidadão)."),
+
+      passo(prefixo+".2 Abrir SIGADOC",
+        "Abrir o SIGADOC colocando como título somente o número do registro, e limitar acesso entre pessoas (antes de incluir a Ata)."),
+
+      passo(prefixo+".3 Realizar os procedimentos necessários",
+        "Realizar os procedimentos necessários."),
+
+      passo(prefixo+".4 Incluir documentos necessários",
+        "Incluir documentos necessários."),
+
+      passo(prefixo+".5 Atenção!",
+        "Não apurar a denúncia MAS aplicar o Protocolo Mares ou de Mediação (conforme situação) para desescalar a situação e fornecer as informações da ação quando a Unidade de Apuração solicitar.",
+        true),
+
+      passo(prefixo+".6 Devolver demanda à Seduc",
+        "Devolver demanda à Seduc.")
+    ];
+  }
+
+  function alinhamentoInternoSEDUC(prefixo) {
+    return [
+
+      passo(prefixo+".1 Verificar Fale Cidadão",
+        "Se não tiver registro no Fale Cidadão (ver no processo), registrar no sistema Fale Cidadão (e dar o protocolo ao cidadão)."),
+
+      passo(prefixo+".2 Abrir SIGADOC",
+        "Abrir o SIGADOC colocando como título somente o número do registro, e limitar acesso entre pessoas (antes de incluir a Ata)."),
+
+      passo(prefixo+".3 Ouvir os envolvidos em separado",
+        "Ouvir os envolvidos em separado (registrar Ata)."),
+
+      passo(prefixo+".4 Estudar os achados",
+        "Estudar os achados elaborar ações de alinhamento ou conscientização."),
+
+      passo(prefixo+".5 Realizar ações de alinhamento ou conscientização",
+        "Realizar ações de alinhamento ou conscientização (registrar Ata)."),
+
+      passo(prefixo+".6 Atenção!",
+        "Não apurar a denúncia MAS aplicar o Protocolo Mares ou de Mediação (conforme situação) para desescalar a situação e fornecer as informações da ação quando a Unidade de Apuração solicitar.",
+        true),
+
+      passo(prefixo+".7 Juntar documentos ao SIGADOC",
+        "Juntar os documentos necessários ao SIGADOC."),
+
+      passo(prefixo+".8 Devolver demanda à Seduc",
+        "Devolver demanda à Seduc.")
+    ];
+  }
+
+  function fluxoSEDUC(prefixo) {
+    return [
+
+      passo(prefixo+".1 Estudar o documento com calma",
+        "Estudar o documento com calma."),
+
+      escolha(
+        prefixo+".2 Definir encaminhamento",
+        "Selecione o procedimento que será adotado:",
+        [
+          {
+            titulo:prefixo+".2.1 Abertura de Protocolo Mares ou de Mediação",
+            paginas:protocoloMaresSEDUC(prefixo+".2.1")
+          },
+
+          {
+            titulo:prefixo+".2.2 Alinhamento interno",
+            paginas:alinhamentoInternoSEDUC(prefixo+".2.2")
+          }
+        ]
+      )
+    ];
+  }
+
+  // ===================================================
+  // 2.1 — BULLYING
+  // ===================================================
+
+  if (n===1) {
+    return fluxoSEDUC("2.1");
+  }
+
+  // ===================================================
+  // 2.2 — VIOLÊNCIA
+  // ===================================================
+
+  if (n===2) {
+    return fluxoSEDUC("2.2");
+  }
+
+  // ===================================================
+  // 2.3 — CONFLITOS INTERPESSOAIS
+  // ===================================================
+
+  if (n===3) {
+    return fluxoSEDUC("2.3");
+  }
+
+  // ===================================================
+  // 2.4 — RECLAMAÇÃO
+  // ===================================================
+
+  if (n===4) {
+    return [
+
+      passo("2.4.1 Estudar a demanda para responder",
+        "Estudar a demanda para responder."),
+
+      escolha(
+        "2.4.2 Definir encaminhamento",
+        "Selecione o procedimento que será adotado:",
+        [
+
+          // ABERTURA DE PROTOCOLO MARES OU MEDIAÇÃO
+
+          {
+            titulo:"2.4.2.1 Abertura de Protocolo Mares ou de Mediação",
+
+            paginas:[
+
+              passo("2.4.2.1.1 Abrir SIGADOC",
+                "Abrir SIGADOC colocando como título somente o número do registro, e limitar acesso entre pessoas (antes de incluir a Ata)."),
+
+              passo("2.4.2.1.2 Incluir Ata do registro",
+                "Incluir Ata do registro."),
+
+              passo("2.4.2.1.3 Realizar os procedimentos necessários",
+                "Realizar os procedimentos necessários."),
+
+              passo("2.4.2.1.4 Incluir documentos necessários",
+                "Incluir documentos necessários."),
+
+              passo("2.4.2.1.5 Devolver demanda para DRE",
+                "Devolver demanda para DRE.")
+            ]
+          },
+
+          // ALINHAMENTO INTERNO
+
+          {
+            titulo:"2.4.2.2 Alinhamento interno",
+
+            paginas:[
+
+              passo("2.4.2.2.1 Ouvir os envolvidos em separado",
+                "Ouvir os envolvidos em separado (registrar Ata)."),
+
+              passo("2.4.2.2.2 Estudar os achados",
+                "Estudar os achados elaborar ações de alinhamento ou conscientização."),
+
+              passo("2.4.2.2.3 Realizar ações de alinhamento ou conscientização",
+                "Realizar ações de alinhamento ou conscientização (registrar Ata)."),
+
+              passo("2.4.2.2.4 Juntar comprovação das ações",
+                "Juntar comprovação das ações."),
+
+              passo("2.4.2.2.5 Devolver demanda para DRE",
+                "Devolver demanda para DRE.")
+            ]
+          }
+        ]
+      )
+    ];
+  }
+
+  // ===================================================
+  // 2.5 — DENÚNCIA
+  // ===================================================
+
+  if (n===5) {
+    return [
+
+      passo("2.5.1 Devolver de imediato",
+        "Devolver de imediato com as informações solicitadas.")
+    ];
+  }
+
+  return [];
+}
+
+
+// =====================================================
+// 9. MENU 3 — RECEBI DA OUVIDORIA
+// =====================================================
+
+
+function menuOuvidoria(n) {
+
+  if (n === 4) return [
+    passo("3.4.1 Estudar a demanda para responder",
+      "Estudar a demanda para responder. A reclamação deverá ser encaminhada via Seduc ou DRE."),
+
+    escolha("3.4.2 Definir encaminhamento",
+      "Selecione o procedimento que será adotado:",
+      [
+        {
+          titulo: "3.4.2.1 Abertura de Protocolo Mares ou de Mediação",
+          paginas: [
+            passo("3.4.2.1.1 Abrir SIGADOC",
+              "Abrir SIGADOC colocando como título somente o número do registro e limitar o acesso entre pessoas (antes de incluir a Ata)."),
+
+            passo("3.4.2.1.2 Incluir Ata do registro",
+              "Incluir Ata do registro."),
+
+            passo("3.4.2.1.3 Realizar os procedimentos necessários",
+              "Realizar os procedimentos necessários."),
+
+            passo("3.4.2.1.4 Incluir documentos necessários",
+              "Incluir os documentos necessários."),
+
+            passo("3.4.2.1.5 Gerar PDF do processo",
+              "Gerar um PDF do processo para incluir no SIGADOC que veio da Ouvidoria."),
+
+            passo("3.4.2.1.6 Arquivar o processo",
+              "Arquivar o processo gerado na escola."),
+
+            passo("3.4.2.1.7 Devolver demanda",
+              "Devolver a demanda para Seduc ou DRE.")
+          ]
+        },
+        {
+          titulo: "3.4.2.2 Alinhamento interno",
+          paginas: [
+            passo("3.4.2.2.1 Ouvir os envolvidos em separado",
+              "Ouvir os envolvidos em separado (registrar Ata)."),
+
+            passo("3.4.2.2.2 Estudar os achados",
+              "Estudar os achados e elaborar ações de alinhamento ou conscientização."),
+
+            passo("3.4.2.2.3 Realizar ações de alinhamento ou conscientização",
+              "Realizar ações de alinhamento ou conscientização (registrar Ata)."),
+
+            passo("3.4.2.2.4 Juntar comprovação das ações",
+              "Juntar a comprovação das ações."),
+
+            passo("3.4.2.2.5 Gerar PDF do processo",
+              "Gerar um PDF do processo para incluir no SIGADOC que veio da Ouvidoria."),
+
+            passo("3.4.2.2.6 Arquivar o processo",
+              "Arquivar o processo gerado na escola."),
+
+            passo("3.4.2.2.7 Devolver demanda",
+              "Devolver a demanda para Seduc ou DRE.")
+          ]
+        }
+      ])
+  ];
+
+  if (n === 5) return [
+    passo("3.5.1 Devolver imediatamente por erro de encaminhamento",
+      "Devolver de imediato, informando que foi erro de encaminhamento. A Ouvidoria não deve enviar denúncia para a escola ou DRE.", true)
+  ];
+
+  return [];
+}
+
+
+// =====================================================
+// 10. MENU 4 — RECEBI DA UNIDADE DE APURAÇÃO
+// =====================================================
+
+function menuUnidadeApuracao() {
+
+  return [
+    escolha(
+      "4.5 Denúncia",
+      "Selecione o tipo de encaminhamento recebido:",
+
+      [
+        {
+          titulo:"4.5.1 Denúncia na íntegra",
+          paginas:[
+            passo("4.5.1.1 Devolver de imediato",
+              "Devolver de imediato informando que foi erro (a Unidade de Apuração não deve enviar denúncia para escola ou DRE).",
+              true)
+          ]
+        },
+
+        {
+          titulo:"4.5.2 Solicitação de informações para apurar denúncia",
+          paginas:[
+            passo("4.5.1.2 Devolver com as informações solicitadas",
+              "Devolver com as informações solicitadas.")
+          ]
+        }
+      ]
+    )
+  ];
+}
+
+// =====================================================
+// 11. CONTROLE DE NAVEGAÇÃO
+// =====================================================
+
+let tela = {
+  tipo:"inicio"
+};
+
+let historico = [];
+
+function clonar(obj) {
+  return JSON.parse(JSON.stringify(obj));
+}
+
+function irPara(novaTela) {
+  historico.push(clonar(tela));
+  tela = novaTela;
+  renderizar();
+}
+
+function menuInicial() {
+  historico = [];
+  tela = {tipo: "inicio"};
+  renderizar();
+}
+
+function voltar() {
+
+  if (historico.length===0) {
+    menuInicial();
+    return;
+  }
+
+  tela = historico.pop();
+  renderizar();
+}
+
+function abrirMenu(id) {
+
+  irPara({
+    tipo:"categorias",
+    menu:id
+  });
+}
+
+function abrirCategoria(n) {
+
+  const menu = tela.menu;
+  let paginas = [];
+
+  if (menu==="0") {
+    paginas = menuCidadao(n);
+  }
+
+  else if (menu==="1") {
+    paginas = menuDRE(n);
+  }
+
+  else if (menu==="2") {
+    paginas = menuSEDUC(n);
+  }
+
+  else if (menu==="3") {
+    paginas = menuOuvidoria(n);
+  }
+
+  else if (menu==="4") {
+    paginas = menuUnidadeApuracao();
+  }
+
+  irPara({
+    tipo:"procedimento",
+    menu:menu,
+    categoria:n,
+    paginas:paginas,
+    indice:0
+  });
+}
+
+function escolherAlternativa(n) {
+
+  const atual = tela.paginas[tela.indice];
+
+  if (!atual || !atual.escolhas) return;
+
+  const alternativa = atual.escolhas[n];
+
+  if (!alternativa) return;
+
+  irPara({
+    tipo:"procedimento",
+    menu:tela.menu,
+    categoria:tela.categoria,
+    paginas:alternativa.paginas,
+    indice:0
+  });
+}
+
+function avancar() {
+
+  if (tela.tipo!=="procedimento") return;
+
+  const atual = tela.paginas[tela.indice];
+
+  if (atual && atual.escolhas) return;
+
+  if (tela.indice < tela.paginas.length-1) {
+    tela.indice++;
+    renderizar();
+  }
+}
+
+// =====================================================
+// 12. EXIBIÇÃO DOS MENUS E PROCEDIMENTOS
+// =====================================================
+
+function renderizar() {
+
+  const area = document.getElementById("conteudo");
+  const botaoAvancar = document.getElementById("btnAvancar");
+
+  let html = "";
+
+  // MENU INICIAL
+
+  if (tela.tipo==="inicio") {
+
+    html = `
+      <span class="etiqueta">ORIENTAÇÃO PARA GESTORES</span>
+
+      <h2>Bem-vindo ao OuvEdu!</h2>
+
+      <div class="descricao">
+        Este ambiente apresenta os procedimentos que devem ser
+        observados pelos gestores ao receber demandas dos
+        diferentes setores.
+
+        Selecione a origem da demanda para conhecer os
+        procedimentos correspondentes.
+      </div>
+
+      <div class="opcoes">
+        ${menus.map(m=>`
+          <button class="opcao"
+            onclick="abrirMenu('${m.id}')">
+            ${m.id} — ${m.nome} →
+          </button>
+        `).join("")}
+      </div>
+    `;
+  }
+
+  // CATEGORIAS
+
+  else if (tela.tipo==="categorias") {
+
+    const menu = menus.find(m=>m.id===tela.menu);
+
+    let disponiveis = [];
+
+    if (tela.menu==="0" ||
+        tela.menu==="1" ||
+        tela.menu==="2") {
+      disponiveis = [1,2,3,4,5];
+    }
+
+    else if (tela.menu==="3") {
+      disponiveis = [4,5];
+    }
+
+    else if (tela.menu==="4") {
+      disponiveis = [5];
+    }
+
+    html = `
+      <span class="etiqueta">MENU ${menu.id}</span>
+
+      <h2>${menu.nome}</h2>
+
+      <div class="descricao">
+        Selecione o assunto da demanda recebida.
+      </div>
+
+      <div class="opcoes">
+        ${disponiveis.map(n=>`
+          <button class="opcao"
+            onclick="abrirCategoria(${n})">
+            ${menu.id}.${n} — ${categorias[n-1]} →
+          </button>
+        `).join("")}
+      </div>
+    `;
+  }
+
+  // PROCEDIMENTOS
+
+  else if (tela.tipo==="procedimento") {
+
+    const atual = tela.paginas[tela.indice];
+
+    const total = tela.paginas.length;
+    const posicao = tela.indice+1;
+
+    html = `
+      <span class="etiqueta">
+        ETAPA ${posicao} DE ${total}
+      </span>
+
+      <h2>${atual.titulo}</h2>
+
+      <div class="progresso">
+        <div class="barra"
+          style="width:${(posicao/total)*100}%">
+        </div>
+      </div>
+
+      <div class="${atual.alerta ? "alerta" : "orientacao"}">
+        ${atual.texto}
+      </div>
+    `;
+
+    // ALTERNATIVAS DE PROCEDIMENTO
+
+    if (atual.escolhas) {
+
+      html += `
+        <div class="descricao">
+          Selecione uma das alternativas para conhecer
+          as etapas do procedimento:
+        </div>
+
+        <div class="opcoes">
+          ${atual.escolhas.map((e,i)=>`
+            <button class="opcao"
+              onclick="escolherAlternativa(${i})">
+              ${e.titulo} →
+            </button>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    // FIM DO PROCEDIMENTO
+
+    else if (tela.indice===total-1) {
+
+      html += `
+        <div class="descricao">
+          <strong>Fim desta orientação.</strong>
+          Utilize Voltar para consultar as etapas anteriores
+          ou Menu inicial para escolher outra demanda.
+        </div>
+      `;
+    }
+  }
+
+  area.innerHTML = html;
+// CONTROLE DO BOTÃO AVANÇAR
+
+  if (tela.tipo!=="procedimento") {
+    botaoAvancar.disabled = true;
+  }
+
+  else {
+    const atual = tela.paginas[tela.indice];
+
+    botaoAvancar.disabled =
+      !!atual.escolhas ||
+      tela.indice>=tela.paginas.length-1;
+  }
+}
+
+// =====================================================
+// 13. INICIALIZAÇÃO
+// =====================================================
+
+renderizar();
+
+</script>
+
+</body>
+</html>
