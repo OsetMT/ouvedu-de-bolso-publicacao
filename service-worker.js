@@ -1,5 +1,5 @@
 
-const CACHE_NAME = 'ouvedu-shell-v3';
+const CACHE_NAME = 'ouvedu-shell-v4';
 
 const APP_SHELL = [
   './',
@@ -7,6 +7,8 @@ const APP_SHELL = [
   './manifest.json',
   './orientacao/index.html',
   './gestores/index.html',
+  './campanhas/index.html',
+  './campanhas/campanhas.json',
   './assets/icons/ouvEdu-192.png',
   './assets/icons/ouvEdu-512.png',
   './assets/ouvEdu-splash.png'

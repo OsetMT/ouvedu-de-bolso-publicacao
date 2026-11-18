@@ -1,0 +1,296 @@
+{
+  "titulo": "Campanhas",
+  "descricao": "Materiais informativos da Ouvidoria Setorial da SEDUC-MT.",
+  "campanhas": [
+    {
+      "id": "violencia-escola",
+      "titulo": "Contra a violência na escola",
+      "total_imagens": 12,
+      "imagens": [
+        {
+          "ordem": 1,
+          "arquivo": "imagens/violencia-escola-01.png",
+          "nome_original": "1000165490.png"
+        },
+        {
+          "ordem": 2,
+          "arquivo": "imagens/violencia-escola-02.png",
+          "nome_original": "1000165491.png"
+        },
+        {
+          "ordem": 3,
+          "arquivo": "imagens/violencia-escola-03.png",
+          "nome_original": "1000165492.png"
+        },
+        {
+          "ordem": 4,
+          "arquivo": "imagens/violencia-escola-04.png",
+          "nome_original": "1000165493.png"
+        },
+        {
+          "ordem": 5,
+          "arquivo": "imagens/violencia-escola-05.png",
+          "nome_original": "1000165494.png"
+        },
+        {
+          "ordem": 6,
+          "arquivo": "imagens/violencia-escola-06.png",
+          "nome_original": "1000165495.png"
+        },
+        {
+          "ordem": 7,
+          "arquivo": "imagens/violencia-escola-07.png",
+          "nome_original": "1000165496.png"
+        },
+        {
+          "ordem": 8,
+          "arquivo": "imagens/violencia-escola-08.png",
+          "nome_original": "1000165497.png"
+        },
+        {
+          "ordem": 9,
+          "arquivo": "imagens/violencia-escola-09.png",
+          "nome_original": "1000165498.png"
+        },
+        {
+          "ordem": 10,
+          "arquivo": "imagens/violencia-escola-10.png",
+          "nome_original": "1000165499.png"
+        },
+        {
+          "ordem": 11,
+          "arquivo": "imagens/violencia-escola-11.png",
+          "nome_original": "1000165500.png"
+        },
+        {
+          "ordem": 12,
+          "arquivo": "imagens/violencia-escola-12.png",
+          "nome_original": "1000165501.png"
+        }
+      ]
+    },
+    {
+      "id": "bullying-escola",
+      "titulo": "Contra o bullying na escola",
+      "total_imagens": 6,
+      "imagens": [
+        {
+          "ordem": 1,
+          "arquivo": "imagens/bullying-escola-01.png",
+          "nome_original": "1000165504.png"
+        },
+        {
+          "ordem": 2,
+          "arquivo": "imagens/bullying-escola-02.png",
+          "nome_original": "1000165505.png"
+        },
+        {
+          "ordem": 3,
+          "arquivo": "imagens/bullying-escola-03.png",
+          "nome_original": "1000165506.png"
+        },
+        {
+          "ordem": 4,
+          "arquivo": "imagens/bullying-escola-04.png",
+          "nome_original": "1000165507.png"
+        },
+        {
+          "ordem": 5,
+          "arquivo": "imagens/bullying-escola-05.png",
+          "nome_original": "1000165508.png"
+        },
+        {
+          "ordem": 6,
+          "arquivo": "imagens/bullying-escola-06.png",
+          "nome_original": "1000165509.png"
+        }
+      ]
+    },
+    {
+      "id": "assedio-escola",
+      "titulo": "Contra o assédio na escola",
+      "total_imagens": 11,
+      "imagens": [
+        {
+          "ordem": 1,
+          "arquivo": "imagens/assedio-escola-01.png",
+          "nome_original": "1000165452.png"
+        },
+        {
+          "ordem": 2,
+          "arquivo": "imagens/assedio-escola-02.png",
+          "nome_original": "1000165454.png"
+        },
+        {
+          "ordem": 3,
+          "arquivo": "imagens/assedio-escola-03.png",
+          "nome_original": "1000165455.png"
+        },
+        {
+          "ordem": 4,
+          "arquivo": "imagens/assedio-escola-04.png",
+          "nome_original": "1000165456.png"
+        },
+        {
+          "ordem": 5,
+          "arquivo": "imagens/assedio-escola-05.png",
+          "nome_original": "1000165457.png"
+        },
+        {
+          "ordem": 6,
+          "arquivo": "imagens/assedio-escola-06.png",
+          "nome_original": "1000165458.png"
+        },
+        {
+          "ordem": 7,
+          "arquivo": "imagens/assedio-escola-07.png",
+          "nome_original": "1000165459.png"
+        },
+        {
+          "ordem": 8,
+          "arquivo": "imagens/assedio-escola-08.png",
+          "nome_original": "1000165460.png"
+        },
+        {
+          "ordem": 9,
+          "arquivo": "imagens/assedio-escola-09.png",
+          "nome_original": "1000165461.png"
+        },
+        {
+          "ordem": 10,
+          "arquivo": "imagens/assedio-escola-10.png",
+          "nome_original": "1000165462.png"
+        },
+        {
+          "ordem": 11,
+          "arquivo": "imagens/assedio-escola-11.png",
+          "nome_original": "1000165463.png"
+        }
+      ]
+    },
+    {
+      "id": "denuncia",
+      "titulo": "Denúncia",
+      "total_imagens": 11,
+      "imagens": [
+        {
+          "ordem": 1,
+          "arquivo": "imagens/denuncia-01.png",
+          "nome_original": "1000165428.png"
+        },
+        {
+          "ordem": 2,
+          "arquivo": "imagens/denuncia-02.png",
+          "nome_original": "1000165429.png"
+        },
+        {
+          "ordem": 3,
+          "arquivo": "imagens/denuncia-03.png",
+          "nome_original": "1000165430.png"
+        },
+        {
+          "ordem": 4,
+          "arquivo": "imagens/denuncia-04.png",
+          "nome_original": "1000165431.png"
+        },
+        {
+          "ordem": 5,
+          "arquivo": "imagens/denuncia-05.png",
+          "nome_original": "1000165432.png"
+        },
+        {
+          "ordem": 6,
+          "arquivo": "imagens/denuncia-06.png",
+          "nome_original": "1000165433.png"
+        },
+        {
+          "ordem": 7,
+          "arquivo": "imagens/denuncia-07.png",
+          "nome_original": "1000165434.png"
+        },
+        {
+          "ordem": 8,
+          "arquivo": "imagens/denuncia-08.png",
+          "nome_original": "1000165435.png"
+        },
+        {
+          "ordem": 9,
+          "arquivo": "imagens/denuncia-09.png",
+          "nome_original": "1000165436.png"
+        },
+        {
+          "ordem": 10,
+          "arquivo": "imagens/denuncia-10.png",
+          "nome_original": "1000165437.png"
+        },
+        {
+          "ordem": 11,
+          "arquivo": "imagens/denuncia-11.png",
+          "nome_original": "1000165439.png"
+        }
+      ]
+    },
+    {
+      "id": "reclamacao",
+      "titulo": "Reclamação",
+      "total_imagens": 11,
+      "imagens": [
+        {
+          "ordem": 1,
+          "arquivo": "imagens/reclamacao-01.png",
+          "nome_original": "1000165414.png"
+        },
+        {
+          "ordem": 2,
+          "arquivo": "imagens/reclamacao-02.png",
+          "nome_original": "1000165415.png"
+        },
+        {
+          "ordem": 3,
+          "arquivo": "imagens/reclamacao-03.png",
+          "nome_original": "1000165416.png"
+        },
+        {
+          "ordem": 4,
+          "arquivo": "imagens/reclamacao-04.png",
+          "nome_original": "1000165417.png"
+        },
+        {
+          "ordem": 5,
+          "arquivo": "imagens/reclamacao-05.png",
+          "nome_original": "1000165418.png"
+        },
+        {
+          "ordem": 6,
+          "arquivo": "imagens/reclamacao-06.png",
+          "nome_original": "1000165419.png"
+        },
+        {
+          "ordem": 7,
+          "arquivo": "imagens/reclamacao-07.png",
+          "nome_original": "1000165420.png"
+        },
+        {
+          "ordem": 8,
+          "arquivo": "imagens/reclamacao-08.png",
+          "nome_original": "1000165421.png"
+        },
+        {
+          "ordem": 9,
+          "arquivo": "imagens/reclamacao-09.png",
+          "nome_original": "1000165422.png"
+        },
+        {
+          "ordem": 10,
+          "arquivo": "imagens/reclamacao-10.png",
+          "nome_original": "1000165423.png"
+        },
+        {
+          "ordem": 11,
+          "arquivo": "imagens/reclamacao-11.png",
+          "nome_original": "1000165424.png"
+        }
+      ]
+    }
+  ]
+}

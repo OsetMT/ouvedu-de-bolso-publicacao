@@ -97,6 +97,11 @@
       border-left: 6px solid #e6a23c;
     }
 
+    .campanhas {
+      background: #ffffff;
+      border-left: 6px solid #773ab4;
+    }
+
     .cartao {
       display: block;
       text-decoration: none;
@@ -139,6 +144,10 @@
 
     .gestores .acessar {
       background: #d99026;
+    }
+
+    .campanhas .acessar {
+      background: #773ab4;
     }
 
     footer {
@@ -214,6 +223,20 @@
 
     </a>
 
+    <a href="./campanhas/index.html"
+       class="cartao campanhas">
+
+      <h2>Campanhas</h2>
+
+      <p>
+        Acesse materiais informativos sobre prevenção à violência,
+        bullying e assédio na escola, além de orientações sobre denúncia e reclamação.
+      </p>
+
+      <span class="acessar">Acessar Campanhas</span>
+
+    </a>
+
     <a href="./gestores/index.html"
        class="cartao gestores">
 
@@ -247,7 +270,7 @@
     }, 2200);
   });
 
-  if ('serviceWorker' in navigator) {
+  if (location.protocol !== 'file:' && 'serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('./service-worker.js')
         .catch(error => {
